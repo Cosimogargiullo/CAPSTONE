@@ -1,0 +1,63 @@
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center col-lg-10">
+
+  <h3 class="pb-3">Profile</h3>
+
+  <form class="" #infoForm="ngForm" (ngSubmit)="ngOnSubmit(infoForm.value)">
+    <div class="d-lg-flex justify-content-lg-between">
+
+      <div class="col-lg-5 justify-content-lg-center">
+
+        <div class="inputBox">
+          <input id="name" type="text" #name="ngModel" ngModel={{profile?.name}}  name="name" required="required"
+            [readonly]="this.isEditable">
+          <span>Name</span>
+        </div>
+
+        <div class="inputBox">
+          <input id="username" type="text" #username="ngModel" ngModel={{profile?.username}} name="username" required="required"
+            [readonly]="this.isEditable">
+          <span>Username</span>
+        </div>
+
+      </div>
+
+      <div class="col-lg-5">
+
+        <div class="inputBox">
+          <input id="surname" type="text" #surname="ngModel" ngModel={{profile?.surname}} name="surname" required="required"
+            [readonly]="this.isEditable">
+          <span>Surame</span>
+        </div>
+
+        <div class="inputBox">
+          <input id="surname" type="email" #email="ngModel" ngModel={{profile?.email}} name="email" required="required"
+            [readonly]="this.isEditable">
+          <span>Email</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="modale" class="contaier d-flex justify-content-center vh-100 align-items-center visibility">
+      <div class="card d-flex align-items-center p-4">
+        <p>Insert password to confirm</p>
+
+        <div class="inputBox">
+          <input id="password" type="password" #password="ngModel" ngModel name="password" required="required"
+            [readonly]="this.isEditable">
+          <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"> -->
+          <span>Password</span>
+        </div>
+        <div>
+          <button class="update-button" type="submit">Enter</button>
+          <button class="update-button" type="button" (click)="edit()">back</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="update-button" type="button" (click)="digit()">{{updateBtn}}</button>
+    <button id="submit" class="update-button visibility" type="button" (click)="edit()">Submit</button>
+
+  </form>
+
+</div>

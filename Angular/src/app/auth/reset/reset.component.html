@@ -1,0 +1,30 @@
+<form class="contaier d-flex justify-content-center vh-100 align-items-center" action="POST" method="post"
+  #resetForm="ngForm" method="post" (ngSubmit)="onSubmit(resetForm.value)">
+  <div class="card d-flex align-items-center p-4">
+    <h3>Reset Password</h3>
+    <p id="i" class="d-none text-danger">Email not registered</p>
+    <p [ngClass]="{'d-flex': password2.touched && password.value != password2.value}" class="text-danger none">Passwords must be the same</p>
+
+    <div class="inputBox">
+      <p class="text-danger" *ngIf="password.touched  && password.invalid"><strong>Digit at least 8 charts, a capital
+          case, a number and a special chart!</strong></p>
+      <input [ngClass]="{'redBorder': password.touched && password.invalid}" id="password" type="password"
+        #password="ngModel" ngModel name="password" required="required" placeholder="Password"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+      <span>Password</span>
+    </div>
+
+    <div class="inputBox">
+      <p class="text-danger" *ngIf="password2.touched  && password2.invalid"><strong>Digit at least 8 charts, a capital
+          case, a number and a special chart!</strong></p>
+      <input [ngClass]="{'redBorder': password2.touched && password2.invalid}" id="password2" type="password"
+        #password2="ngModel" ngModel name="password2" required="required" placeholder="Confirm"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+      <span>Confirm</span>
+    </div>
+
+    <button type="submit" [disabled]="!resetForm.valid && password != password2">Reset</button>
+    <p class="d-flex">Already signed up? <a [routerLink]="['/']" class="nav-link ps-2"> Login</a></p>
+
+  </div>
+</form>

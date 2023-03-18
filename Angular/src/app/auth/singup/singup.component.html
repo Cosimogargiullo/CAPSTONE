@@ -1,0 +1,39 @@
+<form class="contaier d-flex justify-content-center vh-100 align-items-center" action="POST" method="post" #singupForm="ngForm" (ngSubmit)="onSubmit(singupForm.value)" >
+  <div class="card align-items-center p-4">
+    <h3>Sing Up</h3>
+    <div class="d-flex flex-column flex-md-row flex-wrap justify-content-md-evenly">
+      <div class="inputBox">
+        <input id="name" type="text" #name="ngModel" name="name" ngModel required="required" placeholder="Name">
+        <span>Name</span>
+      </div>
+
+      <div class="inputBox col-md-5">
+        <input id="surname" type="text" #surname="ngModel" ngModel name="surname" required="required" placeholder="Surame">
+        <span>Surame</span>
+      </div>
+
+      <div class="inputBox col-md-5">
+        <input id="email" type="email" #email="ngModel" ngModel name="email" required="required" placeholder="Email">
+        <span>Email</span>
+      </div>
+
+      <div class="inputBox col-md-5">
+        <input id="username" type="text" #username="ngModel" ngModel name="username" required="required" placeholder="Username">
+        <span>Username</span>
+      </div>
+
+      <div class="inputBox col-md-5">
+        <input id="password" type="password" #password="ngModel" ngModel name="password" required="required" placeholder="Password">
+        <span>Password</span>
+        <div class="d-flex justify-content-end mt-1">
+        </div>
+
+      </div>
+
+    </div>
+
+    <button type="submit" [disabled]="!singupForm.valid">Sing Up</button>
+    <p class="d-flex pt-2">Already signed up? <a [routerLink]="['/']" class="nav-link ps-2"> Login</a></p>
+
+  </div>
+</form>
