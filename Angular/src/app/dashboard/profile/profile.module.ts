@@ -8,12 +8,16 @@ import { RouterModule } from '@angular/router';
 import { InfoModule } from './info/info.module';
 import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SecurityComponentComponent } from './security-component/security-component.component';
+import { ShopComponent } from './shop/shop.component';
 
 
 @NgModule({
   declarations: [ProfileComponent,
     PasswordComponent,
-    InfoComponent
+    InfoComponent,
+    SecurityComponentComponent,
+    ShopComponent
   ],
   imports: [
     CommonModule,

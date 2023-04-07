@@ -1,3 +1,6 @@
+import { Order } from "./order.interface"
+import { Shop } from "./shop.interface"
+
 export interface Profile {
   id: number
   username: string
@@ -7,8 +10,9 @@ export interface Profile {
   active: boolean
   password: string
   resetPasswordToken: string
+  shop : Shop
   cart : {}[]
   favourite : {}[]
-  orders : {}[]
+  orders : Order[]
   roles: string[]
 }

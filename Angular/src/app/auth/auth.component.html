@@ -1,0 +1,128 @@
+<div class="d-md-flex">
+  <nav class="navbar navbar-expand-md bg-light col-md-2 align-items-md-start sticky-top">
+    <div class="container-fluid flex-md-column">
+      <a class="navbar-brand mt-md-4" [routerLink]="['/']"><img src="./../../../assets/img/insta-square.png"
+          width="100px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav flex-md-column align-items-md-center">
+
+          <!-- HOME BTN -->
+          <li class="nav-item">
+            <a class="nav-link active mt-md-5" aria-current="page" [routerLink]="['/guest']">Home</a>
+          </li>
+
+          <!-- CHECKOUT BTN -->
+          <li class="nav-item">
+            <a class="nav-link mb-md-5" [routerLink]="['/guest/login']">Checkout</a>
+          </li>
+
+          <!-- CART BTN -->
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/guest/login']"><i
+                class="fa-solid fa-cart-shopping me-2 text text-dark link-success "></i>Cart <span
+                id="numeroCarrello"></span></a>
+          </li>
+
+          <!-- LOGIN BTN -->
+          <li class="nav-item">
+            <a class="nav-link" id="loggato" [routerLink]="['/guest/login']"><i
+              class="fa-regular fa-circle-user me-2 text text-dark link-success mb-md-5"></i> Login</a>
+          </li>
+
+          <li class="nav-item mt-5">
+            <a href="https://www.pinterest.it/"><i class="fa fa-pinterest text text-dark link-success"
+                aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram text text-dark link-success ps-2"
+                aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook text text-dark link-success ps-2"
+                aria-hidden="true"></i></a>
+            <a href="https://twitter.com/"><i class="fa fa-twitter ps-2 text text-dark link-success"
+                aria-hidden="true"></i></a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!---MAIN--->
+  <main class="col-md-10">
+    <div class="col d-flex flex-column">
+      <div class="row">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </main>
+  <!---FINE MAIN--->
+
+</div>
+
+
+<!---NEWSLETTER-->
+<section class="newsLetter p-4 text-center">
+  <div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 mt-4">
+        <h3>Subscribe to our newsletter, and get now a <span>of 25%</span></h3>
+      </div>
+      <form class="col-md-12 col-lg-6 mt-5">
+        <div class="row">
+          <div class="col-8">
+            <input type="email" class="form-control" id="inputEmal" placeholder="Digit your E-mail">
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-success mb-3">Enter</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!---FOOTER--->
+<footer class="bg-dark p-5 text-center">
+  <div class="">
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        <a class="navbar-brand">
+          <img src="./../../../assets/img/insta-square.png" alt="movo-logo-img" width="200" class="mt-3">
+        </a>
+      </div>
+      <div class="col-sm-12 col-md-9">
+        <p class="copywrite text-center text-light mt-4">
+          Copyright &copy; 2022 All rights reserved
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<!-- <nav id="guest-nav" class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/guest']"><img src="./../../../assets/img/insta-square.png" alt="movo-logo-img"
+        width="150px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/guest/login']" (click)="change()">{{link}} <i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<!--
+<router-outlet></router-outlet> -->

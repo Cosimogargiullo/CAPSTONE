@@ -2,6 +2,11 @@
 
   <h3 class="pb-3">Profile</h3>
 
+  <p id="username" class="d-none text-danger">Username already taken!</p>
+  <p id="email" class="d-none text-danger">Email already taken!</p>
+  <p id="errGeneric" class="d-none text-danger">Error generic please contact the developers team!</p>
+
+
   <form class="" #infoForm="ngForm" (ngSubmit)="ngOnSubmit(infoForm.value)">
     <div class="d-lg-flex justify-content-lg-between">
 
@@ -30,8 +35,9 @@
         </div>
 
         <div class="inputBox">
-          <input id="surname" type="email" #email="ngModel" ngModel={{profile?.email}} name="email" required="required"
-            [readonly]="this.isEditable">
+          <p class="text-danger" *ngIf="email.touched && email.invalid"><strong>Insert a valid email!</strong></p>
+          <input id="email" type="email" #email="ngModel" ngModel={{profile?.email}} name="email" required="required"
+            [readonly]="this.isEditable" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" >
           <span>Email</span>
         </div>
 
@@ -41,22 +47,22 @@
     <div id="modale" class="contaier d-flex justify-content-center vh-100 align-items-center visibility">
       <div class="card d-flex align-items-center p-4">
         <p>Insert password to confirm</p>
+        <p id="i" class="d-none text-danger">Password incorrect! (Digit at least 8 charts, a capital case, a number and a special chart!)</p>
 
         <div class="inputBox">
-          <input id="password" type="password" #password="ngModel" ngModel name="password" required="required"
+          <input id="password" type="password" autocomplete="off" #password="ngModel" ngModel name="password" required="required"
             [readonly]="this.isEditable">
-          <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"> -->
           <span>Password</span>
         </div>
         <div>
-          <button class="update-button" type="submit">Enter</button>
-          <button class="update-button" type="button" (click)="edit()">back</button>
+          <button class="update-button me-3" type="button" (click)="back()">back</button>
+          <button class="update-button" type="submit" [disabled]="infoForm.invalid">Enter</button>
         </div>
       </div>
     </div>
 
-    <button class="update-button" type="button" (click)="digit()">{{updateBtn}}</button>
-    <button id="submit" class="update-button visibility" type="button" (click)="edit()">Submit</button>
+    <button class="update-button me-3" type="button" (click)="digit()">{{updateBtn}}</button>
+    <button id="submit" class="update-button visibility" type="button" (click)="edit()" [disabled]="name.invalid || email.invalid || username.invalid ||surname.invalid" >Submit</button>
 
   </form>
 

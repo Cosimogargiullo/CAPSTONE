@@ -14,7 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,6 +43,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String username;
+	private String img;
 	private String name;
 	private String surname;
 	private String email;
@@ -47,21 +51,32 @@ public class User {
 	private String password;
 	private String resetPasswordToken;
 	
+	@Autowired
 	@JsonIgnore
-	@OneToOne
-	(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
-	private Cart cart;
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+	private Favourite favourite = new Favourite();
+	
+	@Autowired
+	@JsonIgnore
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+	private Cart cart = new Cart();
 	
 	@JsonIgnore
-	@OneToOne
-	(cascade = CascadeType.ALL)
-    @JoinColumn(name = "favourite_id", referencedColumnName = "id")
-	private Favourite favourite;
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+	private Shop shop;
+	
+//	@JsonIgnore
+//	@OneToOne
+//	(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+//	private Cart cart;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="id")
-	private List<Order> orders = new ArrayList<>();	
+	@OneToMany(mappedBy="user")
+	private List<Order> order = new ArrayList<>();	
 	
 	@ManyToMany
 	@JoinTable(	name = "user_roles", 

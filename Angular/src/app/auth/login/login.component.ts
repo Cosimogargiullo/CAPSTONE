@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/profile.interface';
-import { User } from 'src/app/models/user';
-import { UserClass } from 'src/app/models/user-class';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -18,11 +15,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // loginForm = new FormGroup({
-  //   username: new FormControl(''),
-  //   password: new FormControl(''),
-  // });
 
   onSubmit(loginForm: Profile) {
     this.authSrv.login({ username: loginForm.username, password: loginForm.password }).subscribe(data => {

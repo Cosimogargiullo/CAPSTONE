@@ -1,0 +1,110 @@
+<section>
+
+  <div class="container h-100 py-5">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class=" d-xl-flex flex-xl-row align-items-xl-center">
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="h5">Cart</th>
+                <th scope="col"></th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+
+              </tr>
+            </thead>
+            <tbody id="prodottoCarrello">
+
+              <tr *ngFor="let p of cart">
+                <th scope="row">
+                  <div class="d-flex align-items-center">
+                    <img src="{{p.img}}" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                    <div class="flex-column ms-4">
+                      <p class="mb-2">{{p.title}}</p>
+                    </div>
+                  </div>
+                </th>
+                <td class="align-middle">
+                  <p class="mb-0" style="font-weight: 500;"></p>
+                </td>
+                <td class="align-middle">
+                  <div class="d-flex flex-row">
+                    <button style="width: 50px;" class="me-2" (click)="remove(p.id)">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <input id="form1" min="0" name="quantity" value={{p.count}} onchange="aggiorna()" type="number"
+                      class="form-control form-control-sm" style="width: 50px;" />
+                    <button style="width: 50px;" class="ms-2" (click)="add(p.id)">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </td>
+                <td class="align-middle">
+                  <p class="mb-0" style="font-weight: 500;">&euro;{{(p.price * p.count!) | number : '1.2-2'}}</p>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <div class="card ms-5">
+            <div class="card-body p-4">
+
+              <div class="row justify-content-end">
+
+                <!-- TYPE OF PAYMENT -->
+                <form>
+
+                  <div class="d-flex flex-row">
+                    <div class="d-flex align-items-center">
+                      <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1v" value=""
+                        aria-label="..." checked />
+                    </div>
+                    <div class="rounded border w-100 p-3">
+                      <p class="d-flex align-items-center">
+                        <i class="text-dark pe-2"></i>Pagamento alla consegna
+                      </p>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="">
+                  <div class="d-flex justify-content-between" style="font-weight: 500;">
+                    <p class="mb-2">Totale:</p>
+                    <p class="mb-2">&euro; {{tot}} <span id="totaleCarrello2"></span></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between" style="font-weight: 500;">
+                    <p class="mb-0">Costi di spedizione:</p>
+                    <p class="mb-0">&euro; 10.00</p>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                    <p class="mb-2">Totale</p>
+                    <p class="mb-2">&euro; {{tot+10}} <span id="totaleCarrello"></span></p>
+                  </div>
+
+                  <div class="text-end">
+                    <button [routerLink]="['/checkout']">Checkout</button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

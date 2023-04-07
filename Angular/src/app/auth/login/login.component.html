@@ -1,37 +1,31 @@
-<!-- <form action="POST" method="post" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div>
+  <form id="logForm" class="contaier d-flex justify-content-center m-5 align-items-center" action="POST"
+    method="post" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <div class="card d-flex align-items-center p-4">
+      <h2>Log in</h2>
+      <p id="i" class="d-none text-danger">User not exist or wrong Password!</p>
+      <div class="inputBox">
+        <p class="text-danger" *ngIf="username.touched && username.invalid">Fill the fields!</p>
+        <input [ngClass]="{'redBorder': username.touched && username.invalid}" id="username" type="text"
+          #username="ngModel" ngModel name="username" required="required" placeholder="Username">
+        <span>Username</span>
+      </div>
 
-  <label for="username">Username: </label>
-  <input id="username" type="email" formControlName="username">
+      <div class="inputBox">
+        <p class="text-danger" *ngIf="password.touched  && password.invalid">Digit at least 8 charts, a capital
+            case, a number and a special chart!</p>
+        <input [ngClass]="{'redBorder': password.touched && password.invalid}" id="password" type="password"
+          autocomplete="off" #password="ngModel" ngModel name="password" required="required" placeholder="Password"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+        <span>Password</span>
+        <div class="d-flex justify-content-end mt-1">
+          <a [routerLink]="['/guest/forgot/password']" class="nav-link">Forgot you password?</a>
+        </div>
+      </div>
 
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password">
+      <button type="submit" [disabled]="!loginForm.valid">Enter</button>
+      <p class="d-flex">First time here? <a [routerLink]="['/guest/singup']" class="nav-link ps-2"> Sing Up</a></p>
 
-  <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
-</form> -->
-
-<form class="contaier d-flex justify-content-center vh-100 align-items-center" action="POST" method="post" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
-  <div class="card d-flex align-items-center p-4">
-    <h3>Login</h3>
-    <p id="i" class="d-none text-danger">User don't exist or Passwod incorrect</p>
-    <div class="inputBox">
-        <p id="i" class="d-none text-danger">L'utente non esiste</p>
-      <p class="text-danger" *ngIf="username.touched && username.invalid"><strong>Fill the field!</strong></p>
-      <input  [ngClass]="{'redBorder': username.touched && username.invalid}" id="username" type="text" #username="ngModel" ngModel name="username" required="required" placeholder="Username">
-      <span>Username</span>
     </div>
-
-    <div class="inputBox">
-      <p class="text-danger" *ngIf="password.touched  && password.invalid"><strong>Digit at least 8 charts, a capital case, a number and a special chart!</strong></p>
-      <input [ngClass]="{'redBorder': password.touched && password.invalid}" id="password" type="password" #password="ngModel" ngModel name="password"  required="required" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
-      <span>Password</span>
-      <div class="d-flex justify-content-end mt-1">
-      <a [routerLink]="['/forgot/password']" class="nav-link">Forgot you password?</a>
-    </div>
-    </div>
-
-    <button type="submit" [disabled]="!loginForm.valid">Enter</button>
-    <p class="d-flex">First time here? <a [routerLink]="['/singup']" class="nav-link ps-2"> Sing Up</a></p>
-
-  </div>
-</form>
+  </form>
+</div>

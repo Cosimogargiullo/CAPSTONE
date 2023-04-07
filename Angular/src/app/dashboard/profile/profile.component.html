@@ -1,9 +1,9 @@
 <div class="d-flex flex-column pb-5 flex-md-row justify-content-evenly align-items-md-center">
 
-  <div class="text-center py-5 col-lg-3">
+  <div class="text-center py-5 col-lg-4">
 
     <img
-      src="https://media.licdn.com/dms/image/D4D03AQEz5Bii1VSXyg/profile-displayphoto-shrink_800_800/0/1677950571580?e=1683763200&v=beta&t=1HV2gHOyfbwn8uhIhg-7Zj8nCFvVmhFdRcbh_8U9ljI"
+      src="https://www.uninsubria.it/sites/default/files/styles/medium/public/transgender.png?itok=ifVuS_IK"
       class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Profile picture">
 
     <div class="p-4">
@@ -12,18 +12,17 @@
 
     <div>
       <ul class="list-unstyled">
-        <li><button [routerLink]="['/']">Account</button></li>
-        <li><button [routerLink]="['/password']">Password</button></li>
-        <li><button>Security</button></li>
-        <!-- <li><button>Application</button></li>
-        <li><button>Notification</button></li> -->
+        <li><button [routerLink]="['/profile']">Account</button></li>
+        <li><button [routerLink]="['/profile/password']">Password</button></li>
+        <li><button [routerLink]="['/profile/security']">Security</button></li>
+        <li><button [routerLink]="['/profile/shop']">Shop</button></li>
       </ul>
     </div>
 
   </div>
 
-  <router-outlet></router-outlet>
+  <div class="py-5 col-lg-6">
+    <router-outlet></router-outlet>
+  </div>
 
 </div>
-
-

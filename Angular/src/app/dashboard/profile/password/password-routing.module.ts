@@ -6,6 +6,7 @@ const routes: Routes = [{
   path:'',
   component:PasswordComponent,
 }];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

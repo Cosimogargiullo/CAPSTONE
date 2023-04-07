@@ -1,0 +1,15 @@
+.inputBox {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.inputBox input {
+  border-left: 2px solid rgba(0, 0, 0, 0.202);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.202);
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+  .inputBox {
+    width: 250px;
+  }
+}

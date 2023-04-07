@@ -1,0 +1,36 @@
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center col-lg-10">
+
+  <h3 class="pb-3">Security</h3>
+
+  <p>Do you wat to delete your profile?</p>
+
+  <p id="errGeneric" class="d-none text-danger">Error generic please contact the developers team!</p>
+
+  <form #deleteForm="ngForm" (ngSubmit)="ngOnSubmit(deleteForm.value)">
+  <div id="modale" class="contaier d-flex justify-content-center vh-100 align-items-center visibility">
+    <div class="card d-flex align-items-center p-4">
+      <p>Insert password to confirm</p>
+      <p id="success" class="d-none text-success">User deleted correctly!</p>
+      <div id="success-spin" class="d-none spinner-border" role="status">
+        <span class="sr-only"></span>
+      </div>
+      <p id="i" class="d-none text-danger">Wrong Password!</p>
+
+      <div class="inputBox">
+        <input id="password" type="password" autocomplete="off" #password="ngModel" ngModel name="password" required="required"
+          [readonly]="this.isEditable">
+        <span>Password</span>
+      </div>
+      <div>
+        <button class="update-button me-3" type="button" (click)="back()">back</button>
+        <button class="update-button" type="submit" [disabled]="deleteForm.invalid">Enter</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+  <div>
+    <button class="update-button me-3" type="button" (click)="show()">{{deleteBtn}}</button>
+    <button id="delete" class="update-button display" type="button" (click)="edit()" [disabled]="">Delete</button>
+  </div>
+</div>

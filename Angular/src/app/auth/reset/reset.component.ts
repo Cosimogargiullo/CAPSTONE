@@ -19,15 +19,18 @@ export class ResetComponent implements OnInit {
       this.profile = e
       console.log(this.profile)
       if (this.profile! == null) {
-        this.router.navigate(["/"])
+        document.getElementById("notValid")?.classList.remove("d-none")
+        document.getElementById("card")?.classList.add("d-none")
       }
     })
   }
 
   onSubmit(password: {password: string}): void {
-    console.log(password)
     this.auth.resetPassword(this.profile!.id, password)
-    this.router.navigate(["/"])
+    document.getElementById("modal")?.classList.remove("d-none")
+        setTimeout(()=>{
+          this.router.navigate(["/guest/login"])
+      }, 1700);
   }
 
 }

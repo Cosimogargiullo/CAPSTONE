@@ -1,0 +1,55 @@
+<section>
+
+  <h3 class="mt-5 text-center">Order history</h3>
+  <div class="container h-100 py-5">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class=" ">
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Price</th>
+
+              </tr>
+            </thead>
+
+            <tbody id="prodottoCarrello">
+
+              <tr *ngFor="let o of order">
+                <td class="align-middle">
+                  <p> {{o.name + " " + o.surname}} </p>
+                </td>
+
+                <td class="align-middle">
+                  <p> {{o.email}} </p>
+                </td>
+
+                <td class="align-middle">
+                  <p> {{o.address}}, {{o.city}}, {{o.state}}, {{o.cap}}</p>
+                </td>
+
+                <td class="align-middle">
+                  <p> {{o.date | date }} </p>
+                </td>
+
+                <td class="align-middle">
+                  <p>&euro;{{o.tot | number : '1.2-2'}}</p>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

@@ -17,6 +17,16 @@ const routes: Routes = [
         path:'password',
         loadChildren:()=>
           import('./password/password.module').then((mod)=>mod.PasswordModule)
+      },
+      {
+        path:'security',
+        loadChildren:()=>
+          import('./security-component/security-component.module').then((mod)=>mod.SecurityComponentModule)
+      },
+      {
+        path:'shop',
+        loadChildren:()=>
+          import('./shop/shop.module').then((mod)=>mod.ShopModule)
       }
     ],
   }

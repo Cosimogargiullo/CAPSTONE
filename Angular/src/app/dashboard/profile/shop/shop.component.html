@@ -1,0 +1,59 @@
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center col-lg-10">
+
+  <div class="container-fluid d-flex flex-column align-items-center justify-content-center col-lg-10">
+
+    <h3 class="pb-3">Shop</h3>
+
+    <p id="name" class="d-none text-danger">Name already taken!</p>
+
+    <form *ngIf="!shop" #createShopForm="ngForm" (ngSubmit)="ngOnSubmit(createShopForm.value, password.value)">
+      <div class="d-lg-flex justify-content-lg-between">
+
+        <div class="col-lg-5 justify-content-lg-center">
+
+
+          <div class="inputBox">
+            <p class="text-center pb-2">You don't have a shop yet, fill the form to create one!</p>
+            <input id="shopName" type="text" #name="ngModel" ngModel name="shopName" required="required"
+              placeholder="Shop-Name" [readonly]="this.isEditable">
+            <span>Name</span>
+          </div>
+
+          <div class="inputBox">
+            <input id="img" type="text" #img="ngModel" ngModel name="img" required="required"
+              placeholder="image" [readonly]="this.isEditable">
+            <span>image</span>
+          </div>
+
+          <!-- <div class="inputBox">
+            <input type="file" id="img" name="img" accept="image/png, image/jpeg" #img="ngModel" ngModel>
+          </div> -->
+
+        </div>
+
+      </div>
+
+      <div id="modale" class="contaier d-flex justify-content-center vh-100 align-items-center d-none">
+        <div class="card d-flex align-items-center p-4">
+          <p>Insert password to confirm</p>
+          <p id="i" class="d-none text-danger">Password incorrect! (Digit at least 8 charts, a capital case, a number
+            and a special chart!)</p>
+
+          <div class="inputBox">
+            <input id="password" type="password" autocomplete="off" #password="ngModel" ngModel name="password"
+              required="required" [readonly]="this.isEditable">
+            <span>Password</span>
+          </div>
+          <div>
+            <button class="update-button me-3" type="button" (click)="back()">back</button>
+            <button class="update-button" type="submit" [disabled]="createShopForm.invalid">Enter</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="update-button me-3" type="button" (click)="show()">{{shopBtn}}</button>
+      <button id="submit" class="update-button display" type="button" (click)="edit()" [disabled]="name.invalid">Submit</button>
+
+    </form>
+
+  </div>

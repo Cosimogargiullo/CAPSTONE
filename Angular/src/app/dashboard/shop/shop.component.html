@@ -1,0 +1,25 @@
+<div class="d-flex flex-column pb-5 flex-md-row justify-content-evenly mt-md-5 pt-md-5">
+
+  <div class="text-center py-5 col-lg-4">
+    <img
+      src={{shop?.img}}
+      class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Profile picture">
+
+    <div class="p-4">
+      <h4 class="text-center">{{shop?.shopName}}</h4>
+    </div>
+
+    <div>
+      <ul class="list-unstyled">
+        <li><button [routerLink]="['/shop']">Products</button></li>
+        <li><button [routerLink]="['/shop/create/product']">Create</button></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="py-5 col-lg-6">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

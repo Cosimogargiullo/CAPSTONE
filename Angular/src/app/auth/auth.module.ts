@@ -9,9 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SingupComponent } from './singup/singup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetComponent } from './reset/reset.component';
+import { AuthComponent } from './auth.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
-  declarations: [LoginComponent, SingupComponent, ForgotPasswordComponent, ResetComponent],
+  declarations: [AuthComponent, LoginComponent, SingupComponent, ForgotPasswordComponent, ResetComponent, HomepageComponent],
   imports: [CommonModule, AuthRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

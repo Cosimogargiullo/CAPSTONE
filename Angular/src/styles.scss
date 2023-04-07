@@ -1,9 +1,156 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/colors';
+@import './assets/scss/variables';
+
+//HOME//
+
+:root {
+  --surface-color: #eaeaea;
+  --curve: 20;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: $bg-gray;
+}
+
+.cards {
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  height: auto;
+  //border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  //border-radius: calc(var(--curve) * 1px);
+  // background-color: var(--surface-color);
+  background-color: rgba(255, 255, 255, 0.674);
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
+  // background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.card__title {
+  font-size: 2em;
+  margin: 0 0 .3em;
+  color: #488745;
+}
+
+.card__tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "Arial, Helvetica, sans-serif";
+  font-size: .8em;
+  color: #488745;
+}
+
+.card__status {
+  font-size: 1.5em;
+  color: #000000;
+}
+
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #000000;
+  font-family: "Arial, Helvetica, sans-serif";
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+
+//COLORI MISCELANIA//
+.form-check-input:checked {
+  background-color: $bg-default;
+  border-color: $bg-default;
+}
+
+//NEWSLETTER//
+
+.newsLetter {
+  position: relative;
+  z-index: 100;
+
+  background-color: $secondary-color;
+
+  h3,
+  p {
+    color: $white-color;
+  }
+
+  span {
+    color: $important-text;
+    font-weight: bold;
+  }
+
+}
+
+//LOGIN//
+#login {
+  width: 30%;
+}
+
+#sfondoLogin {
+  background-image: url('/assets/img/core-img/sfondologin.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 body {
@@ -14,3 +161,339 @@ body {
   visibility: hidden;
 }
 
+.display {
+  display: none;
+}
+
+#modale {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #e3e3e35d;
+}
+
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.container {
+  background: #e3e3e3;
+}
+
+.card {
+  width: 300px;
+  gap: 35px;
+  border-radius: 15px;
+  background: #e3e3e3;
+  box-shadow: 16px 16px 32px #c8c8c8,
+    -16px -16px 32px #fefefe;
+}
+
+.inputBox {
+  position: relative;
+  width: 250px;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 1em;
+  background: transparent;
+  border-radius: 5px;
+  border-left: 2px solid rgba(0, 0, 0, 0.202);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.202);
+  transition: 0.1s;
+}
+
+.inputBox .redBorder {
+  border: 2px solid red;
+}
+
+.inputBox span {
+  margin-top: 5px;
+  position: absolute;
+  right: 130px;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  color: transparent;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+}
+
+.inputBox input::placeholder {
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  color: #000;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+}
+
+
+.inputBox input:valid::placeholder,
+.inputBox input:focus::placeholder {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: transparent;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+  color: transparent;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  transform: translateX(113px) translateY(-25px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+  border: 2px solid #000;
+}
+
+button {
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+button:hover {
+  background-color: #000;
+  color: white;
+}
+
+.fav-button {
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  background-color: #000;
+  color: white;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.fav-button:hover {
+  background-color: white #000;
+  color: #000;
+}
+
+a {
+  color: #a1a1a1;
+}
+
+#img::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+#img::before {
+  content: 'Select image file';
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+
+// body {
+//   background-color: #e3e3e3;
+// }
+
+// .visibility {
+//   visibility: hidden;
+// }
+
+// .display {
+//   display: none;
+// }
+
+// #modale {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: #e3e3e35d;
+// }
+
+// h3 {
+//   text-transform: uppercase;
+//   letter-spacing: 2px;
+//   color: #000;
+// }
+
+// .container {
+//   background: #e3e3e3;
+// }
+
+// .card {
+//   width: 300px;
+//   gap: 35px;
+//   border-radius: 15px;
+//   background: #e3e3e3;
+//   box-shadow: 16px 16px 32px #c8c8c8,
+//       -16px -16px 32px #fefefe;
+// }
+
+// .inputBox {
+//   position: relative;
+//   width: 250px;
+// }
+
+// .inputBox input {
+//   width: 100%;
+//   padding: 10px;
+//   outline: none;
+//   border: none;
+//   color: #000;
+//   font-size: 1em;
+//   background: transparent;
+//   border-radius: 5px;
+//   border-left: 2px solid rgba(0, 0, 0, 0.202);
+//   border-bottom: 2px solid rgba(0, 0, 0, 0.202);
+//   transition: 0.1s;
+// }
+
+// .inputBox .redBorder{
+//   border: 2px solid red;
+// }
+
+// .inputBox span {
+//   margin-top: 5px;
+//   position: absolute;
+//   right: 130px;
+//   transform: translateY(-4px);
+//   margin-left: 10px;
+//   padding: 10px;
+//   pointer-events: none;
+//   font-size: 12px;
+//   color: transparent;
+//   text-transform: uppercase;
+//   transition: 0.5s;
+//   letter-spacing: 3px;
+// }
+
+// .inputBox input::placeholder {
+//   position: absolute;
+//   left: 0;
+//   transform: translateY(-4px);
+//   margin-left: 10px;
+//   padding: 10px;
+//   pointer-events: none;
+//   font-size: 12px;
+//   color: #000;
+//   text-transform: uppercase;
+//   transition: 0.5s;
+//   letter-spacing: 3px;
+// }
+
+
+// .inputBox input:valid::placeholder,
+// .inputBox input:focus::placeholder {
+//   transform: translateX(113px) translateY(-15px);
+//   font-size: 0.8em;
+//   padding: 5px 10px;
+//   background: transparent;
+//   letter-spacing: 0.2em;
+//   color: #fff;
+//   border: 2px;
+//   color: transparent;
+// }
+
+// /*
+// A tilde = ~ -----> On mac = option + n
+// */
+
+// .inputBox input:valid~span,
+// .inputBox input:focus~span {
+//   transform: translateX(113px) translateY(-25px);
+//   font-size: 0.8em;
+//   padding: 5px 10px;
+//   background: #000;
+//   letter-spacing: 0.2em;
+//   color: #fff;
+//   border: 2px;
+// }
+
+// .inputBox input:valid,
+// .inputBox input:focus {
+//   border: 2px solid #000;
+// }
+
+// button {
+//   height: 45px;
+//   width: 100px;
+//   border-radius: 5px;
+//   border: 2px solid #000;
+//   cursor: pointer;
+//   background-color: transparent;
+//   transition: 0.5s;
+//   text-transform: uppercase;
+//   font-size: 10px;
+//   letter-spacing: 2px;
+// }
+
+// button:hover {
+//   background-color: #000;
+//   color: white;
+// }
+
+// a {
+//   color: #a1a1a1;
+// }
+
+// #img::-webkit-file-upload-button {
+//   visibility: hidden;
+// }
+// #img::before {
+//   content: 'Select image file';
+//   white-space: nowrap;
+//   cursor: pointer;
+//   font-family: Arial, Helvetica, sans-serif;
+//   font-size: 12px;
+//   text-transform: uppercase;
+//   letter-spacing: 3px;
+// }

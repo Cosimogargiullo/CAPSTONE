@@ -1,9 +1,20 @@
 <form class="contaier d-flex justify-content-center vh-100 align-items-center" action="POST" method="post"
   #resetForm="ngForm" method="post" (ngSubmit)="onSubmit(resetForm.value)">
-  <div class="card d-flex align-items-center p-4">
+  <h3 id="notValid" class="d-none">Link Not Valid</h3>
+
+  <div id="card" class="card d-flex align-items-center p-4">
     <h3>Reset Password</h3>
+
+    <div id="modal" class="z-3 text-center d-none">
+      <p>You've resetted your password correctly, lets login! </p>
+      <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+
     <p id="i" class="d-none text-danger">Email not registered</p>
-    <p [ngClass]="{'d-flex': password2.touched && password.value != password2.value}" class="text-danger none">Passwords must be the same</p>
+    <p [ngClass]="{'d-flex': password2.touched && password.value != password2.value}" class="text-danger none">Passwords
+      must be the same</p>
 
     <div class="inputBox">
       <p class="text-danger" *ngIf="password.touched  && password.invalid"><strong>Digit at least 8 charts, a capital

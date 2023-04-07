@@ -1,0 +1,100 @@
+<div>
+  <nav class="navbar navbar-expand-md bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filter"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><i
+          class="fa-solid fa-sliders"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="filter">
+        <ul class="navbar-nav align-items-md-baseline">
+          <li>
+            <div class="nav-item dropdown my-3 pe-md-3">
+              <p class="text-uppercase font-weight-bold">Filter ></p>
+            </div>
+          </li>
+          <!-- CATEGORY BTN -->
+          <li class="">
+            <div class="nav-item dropdown my-3 me-md-3">
+              <select #categorySelect class="form-select bg-light" aria-label="Default select example" id="category"
+                (change)="category(categorySelect.value)">
+                <option value="guest">All Categories</option>
+                <option *ngFor="let c of categories" value={{c.name}}>{{c.name}}</option>
+              </select>
+            </div>
+          </li>
+
+          <!-- PRICE BTN -->
+          <li class="">
+            <div class="nav-item dropdown my-3 me-md-3">
+              <select class="form-select bg-light" aria-label="Default select example" id="ordinaPerPrezzo" #order
+                (change)="orderBy(order.value)">
+                <option selected value="">Order by</option>
+                <option value="asc">Cheapest</option>
+                <option value="des">More Expensive</option>
+              </select>
+            </div>
+          </li>
+
+          <!-- PRICE BTN -->
+          <li class="">
+            <form action="GET" #searchForm="ngForm" (ngSubmit)="search(searchString.value)">
+              <div class="nav-item dropdown d-flex">
+                <input class="form-control me-2" type="text" #searchString="ngModel" ngModel name="searchString"
+                  required="required" placeholder="Search">
+                <button type="submit" style="width: 50px;"><i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+
+                    <button *ngIf="logged" style="width: 50px;" class="ms-3" (click)="favouriteSection()"><i class="fa-solid fa-bookmark"></i></button>
+                    <button *ngIf="logged" style="width: 50px;" class="ms-3" [routerLink]="['/cart']"><i class="fa fa-shopping-cart"></i></button>
+              </div>
+            </form>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="col d-flex flex-column align-items-center flex-md-row justify-content-md-evenly flex-wrap col-12 my-5">
+    <!---PRODOTTO--->
+    <div class="cards m-3 position-relative" *ngFor="let p of products">
+      <button [ngClass]="{'fav-button': p.favBtn}" id="add{{p.id}}" *ngIf="logged && favToggle" style="width: 50px; height: 50px;" class="z-3 position-absolute m-3 end-0" (click)="addFavourite(p.id)"><i class="fa-solid fa-bookmark"></i></button>
+      <button id="add{{p.id}}" *ngIf="logged && !favToggle" style="width: 50px; height: 50px;" class="z-3 position-absolute m-3 end-0 fav-button" (click)="delFavourite(p.id)"><i class="fa-solid fa-bookmark"></i></button>
+      <a class="card z-0" [routerLink]="logged ? ['/info/product/', p.id] : ['/guest/info/product/', p.id]">
+        <img src={{p.img}} class="card__image" alt="image-product" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <div class="card-body m-2 d-flex justify-content-center">
+              <p class="fw-bold text-uppercase text-dark"> {{p.title}} </p>
+              <p class="text-muted fw-bold">${{p.price}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!--
+<div class="content w-100 my-5 d-flex flex-column flex-xl-row flex-xl-wrap align-items-center">
+  <div class="my-5 text-center col-xl-6" *ngFor="let p of products">
+    <div class="card-product shadow-sm rounded-4">
+      <div class="w-100 img-bg rounded-4">
+        <img class="bd-placeholder-img card-img-top" src="{{p.img}}">
+      </div>
+
+      <div class="card-body m-2 d-flex justify-content-around">
+        <p class="fw-bold text-uppercase"> {{p.title}} </p>
+        <p class="text-muted">$ {{p.price}}</p>
+      </div>
+
+
+      <div class="btn-group mb-3">
+        <button type="button" class="me-2" [routerLink]="['/shop/product/details', p.id]">Details</button>
+        <button type="button">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div> -->

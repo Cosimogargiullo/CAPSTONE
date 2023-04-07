@@ -1,0 +1,74 @@
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center col-lg-10">
+
+  <h3 class="pb-3">Create Product</h3>
+
+  <p id="username" class="d-none text-danger">Username already taken!</p>
+  <p id="success" class="d-none text-success">Product update correctly!</p>
+  <p id="errGeneric" class="d-none text-danger">Error generic please contact the developers team!</p>
+
+
+  <form class="" #productForm="ngForm" (ngSubmit)="ngOnSubmit(productForm.value)">
+    <div class="d-lg-flex justify-content-lg-between">
+
+      <div class="col-lg-5 justify-content-lg-center">
+
+        <div class="inputBox">
+          <input id="title" type="text" #title="ngModel" ngModel={{product?.title}} name="title" required="required" placeholder="title">
+          <span>title</span>
+        </div>
+
+        <div class="inputBox">
+          <input id="price" type="number" #price="ngModel" ngModel={{product?.price}} name="price" required="required" placeholder="price">
+          <span>price</span>
+        </div>
+
+        <div class="inputBox">
+          <input id="description" type="text" #description="ngModel" ngModel={{product?.description}} name="description" required="required"
+            placeholder="description">
+          <span>description</span>
+        </div>
+
+      </div>
+
+      <div class="col-lg-5 justify-content-lg-center">
+
+        <div class="inputBox">
+
+          <p id="errCat" class="d-none text-danger">Category already present!</p>
+          <p id="errCatSize" class="d-none text-danger">Max 3 categories!</p>
+
+          <div class="mb-5" *ngIf="categories.length > 0">
+            <p class="cat-span p-1 me-2" *ngFor="let c of categories;let i = index">{{c}} <i class="fa-solid fa-delete-left" (click)="removeCategory(i)"></i></p>
+          </div>
+
+          <input id="category" type="text" #category="ngModel" ngModel name="category" required="required"
+            placeholder="category" (click)="categoryBtn()">
+          <span>category</span>
+
+          <div id="category-btn" class="d-none">
+          <button  class="mt-3 category-btn me-3" type="button" (click)="categoryBtn2()" >back</button>
+
+          <button  class="mt-3 category-btn" type="button" (click)="addCategory(category.value)"
+            [disabled]="category.invalid">add</button>
+          </div>
+
+        </div>
+
+        <div class="inputBox">
+          <input id="img" type="text" #img="ngModel" ngModel={{product?.img}} name="img" required="required" placeholder="image">
+          <span>image</span>
+        </div>
+
+        <!-- <div class="inputBox">
+        <input type="file" id="img" name="img" accept="image/png, image/jpeg" #img="ngModel" ngModel>
+        </div> -->
+
+      </div>
+    </div>
+
+    <button id="submit" class="update-button" type="submit" [disabled]="productForm.invalid">Update</button>
+
+  </form>
+
+</div>
+

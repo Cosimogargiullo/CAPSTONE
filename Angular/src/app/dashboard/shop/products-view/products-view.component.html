@@ -1,0 +1,23 @@
+
+<h3 class="text-center" *ngIf="products!.length <= 0 ">No product yet!</h3>
+<div class="content w-100 my-5 d-flex flex-column flex-xl-row flex-xl-wrap align-items-center">
+  <div class="my-5 text-center col-xl-6" *ngFor="let p of products">
+    <div class="card-product shadow-sm rounded-4">
+      <div class="w-100 img-bg rounded-4">
+        <img class="bd-placeholder-img card-img-top" src="{{p.img}}">
+      </div>
+
+      <div class="card-body m-2 d-flex justify-content-around">
+        <p class="fw-bold text-uppercase"> {{p.title}} </p>
+        <p class="text-muted">$ {{p.price}}</p>
+      </div>
+
+
+      <div class="btn-group mb-3">
+        <button type="button" class="me-2" [routerLink]="['/shop/product/details', p.id]">Details</button>
+        <button type="button" (click)="deleteProduct(p.id)">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>

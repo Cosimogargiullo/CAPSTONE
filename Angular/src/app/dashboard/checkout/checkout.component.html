@@ -1,0 +1,119 @@
+<div class="row g-5 m-5">
+
+  <!-- MODALE -->
+  <div id="modale" class="z-3 contaier d-flex justify-content-center vh-100 align-items-center d-none">
+    <div class="card d-flex align-items-center p-4">
+
+      <p>You've order has been sent correctly, lets check it!</p>
+      <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+        </div>
+    </div>
+  </div>
+
+  <!-- INFO ORDER -->
+  <div class="col-md-5 col-lg-4 order-md-last">
+
+    <ul class="card p-4 mb-3 list-unstyled">
+
+      <h4 class="d-flex justify-content-between align-items-center mb-3">Order Info</h4>
+
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Total Products (EUR)</span>
+        <strong>&euro; {{tot}}<span id="totaleCarrello"></span></strong>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Shiping Cost (EUR)</span>
+        <strong>&euro; 10</strong>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Total order (EUR)</span>
+        <strong>&euro; {{tot+10}} <span id="totaleCarrello2"></span></strong>
+      </li>
+
+      <li class="list-group-item">
+        <form class="p-3 mt-2">
+          <h4 class="mb-3 mt-3">PAYMENT</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Pagamento alla consegna</label>
+            </div>
+          </div>
+        </form>
+        <button class="w-100" type="submit" (click)="onSubmit(checkoutForm.value)" [disabled]="checkoutForm.invalid">Check-Out</button>
+      </li>
+    </ul>
+
+
+  </div>
+
+
+
+  <div class="col-md-7 col-lg-8">
+    <div class="card align-items-center p-4">
+      <h4 class="mb-3">Dati di fatturazione</h4>
+      <form #checkoutForm="ngForm" action="POST" method="POST" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <div class="row g-3">
+          <div class="d-flex flex-column flex-md-row flex-wrap justify-content-md-evenly">
+
+          <div class="inputBox my-3 my-3">
+            <p class="text-danger" *ngIf="name.touched && name.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': name.touched && name.invalid}" id="name" type="text" #name="ngModel"
+              name="name" ngModel required="required" placeholder="Name">
+            <span>Name</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="surname.touched && surname.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': surname.touched && surname.invalid}" id="surname" type="text"
+              #surname="ngModel" name="surname" ngModel required="required" placeholder="Surname">
+            <span>Surame</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="email.touched && email.invalid"><strong>Insert a valid email!</strong></p>
+            <input [ngClass]="{'redBorder': email.touched && email.invalid}" id="email" type="email" #email="ngModel"
+              ngModel name="email" required="required" placeholder="Email"
+              pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+            <span>Email</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="address.touched && address.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': address.touched && address.invalid}" id="address" type="text"
+              #address="ngModel" name="address" ngModel required="required" placeholder="Address">
+            <span>Address</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="city.touched && city.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': city.touched && city.invalid}" id="city" type="text" #city="ngModel"
+              name="city" ngModel required="required" placeholder="City">
+            <span>City</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="state.touched && state.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': state.touched && state.invalid}" id="state" type="text" #state="ngModel"
+              name="state" ngModel required="required" placeholder="State">
+            <span>State</span>
+          </div>
+
+          <div class="inputBox my-3">
+            <p class="text-danger" *ngIf="cap.touched && cap.invalid"><strong>Fill the field!</strong></p>
+            <input [ngClass]="{'redBorder': cap.touched && cap.invalid}" id="cap" type="number" #cap="ngModel" name="cap"
+              ngModel required="required" placeholder="Cap">
+            <span>Cap</span>
+          </div>
+
+        </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
